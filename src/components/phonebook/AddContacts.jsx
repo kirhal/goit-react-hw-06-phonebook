@@ -14,7 +14,7 @@ Notify.init({
 });
 
 export default function AddContacts() {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.data);
   const dispatch = useDispatch();
 
   const addContact = evt => {
@@ -35,9 +35,9 @@ export default function AddContacts() {
     form.reset();
   };
 
-  const checkOriginalNames = (contacts, contact) => {
+  const checkOriginalNames = (contacts, inputValue) => {
     return contacts.find(
-      ({ name }) => name.toLowerCase() === contact.toLowerCase()
+      ({ name }) => name.toLowerCase() === inputValue.toLowerCase()
     );
   };
 
@@ -67,4 +67,3 @@ export default function AddContacts() {
     </form>
   );
 }
-

@@ -2,13 +2,21 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: { data: [] },
+  initialState: {
+    data: [
+      { id: 1, name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 2, name: 'Hermione Kline', number: '443-89-12' },
+    ],
+  },
   reducers: {
     pushContact(state, action) {
-      state.push(action.payload);
+      const contacts = state.data;
+      contacts.push(action.payload);
     },
     deleteContact(state, action) {
-      return state.filter(({ id }) => id !== action.payload);
+      const contacts = state.data;
+      console.log('in deleteContacts', contacts);
+      return contacts.filter(({ id }) => id !== action.payload);
     },
   },
 });

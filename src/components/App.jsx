@@ -9,7 +9,8 @@ import MapContacts from './contacts/RenderContacts';
 import FilterContacts from './filter/FilterContacts';
 
 export default function App() {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.data);
+  console.log(contacts);
   // const localContacts = localStorage.getItem('contacts');
 
   // const [contacts, setContacts] = useState(
@@ -26,7 +27,7 @@ export default function App() {
         <AddContacts />
       </Section>
       <Section title="Contacts">
-        {contacts.data.length !== 0 && (
+        {contacts.length !== 0 && (
           <>
             <FilterContacts />
             <MapContacts />
