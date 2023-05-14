@@ -1,24 +1,32 @@
 import { addContact, deleteContact, filterContacts } from './actions';
+import { createReducer } from '@reduxjs/toolkit';
 
-const contactsInitialState = [];
+// 0 - початковий стан
+// const contactsInitialState = [{ id: 1, name: 'boo', number: '123-23-33' }];
 
-export const contactsReducer = (state = contactsInitialState, action) => {
-  switch (action.type) {
-    case addContact.type:
-      return [...state, action.payload];
-    case deleteContact.type:
-      return state.filter(task => task.id !== action.payload);
-    case filterContacts.type:
-      return state.map(task => {
-        if (task.id !== action.payload) {
-          return task;
-        }
-        return { ...task, completed: !task.completed };
-      });
-    default:
-      return state;
-  }
-};
-export const filtersReducer = (state = 0, action) => {
-  // Reducer code
-};
+export const contactsReducer = createReducer(1, {
+  [addContact]: (state, action) => {
+    state.push(action.payload);
+  },
+  [deleteContact]: (state, action) => {
+    // const index = state.findIndex(({ id }) => id === action.payload);
+    // state.splice(index, 1);
+    state.filter(({ id }) => id !== action.payload);
+  },
+  // FILTER????
+  // [filterContacts]: (state, action) => {
+  //   state.filter(({ name }) =>
+  //     name.toLowerCase().includes(action.payload.name)
+  //   );
+  // },
+});
+
+const filterInitialState = '';
+
+export const filterReducer = createReducer(filterInitialState, {
+  [filterContacts]: (state, action) => {
+    state.filter(({ name }) =>
+      name.toLowerCase().includes(action.payload.name)
+    );
+  },
+});

@@ -11,5 +11,11 @@ export const addContact = createAction('contacts/AddContact', text => {
     },
   };
 });
-export const deleteContact = createAction('contacts/DeleteContact');
+export const deleteContact = createAction('contacts/DeleteContact', text => {
+  return {
+    payload: text,
+  };
+});
 export const filterContacts = createAction('filters/FilterContacts');
+
+// console.log(deleteContact('1'));

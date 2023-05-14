@@ -1,7 +1,47 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { nanoid } from '@reduxjs/toolkit';
+import { useSelector, useDispatch } from 'react-redux';
+import { pushContact } from 'redux/contactsSlice';
+
 import css from './AddContacts.module.css';
 
-export default function AddContacts({ addContact }) {
+Notify.init({
+  fontSize: '20px',
+  width: '400px',
+  position: 'top-center',
+  cssAnimationDuration: 500,
+  cssAnimationStyle: 'zoom',
+});
+
+export default function AddContacts() {
+  const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+
+  const addContact = evt => {
+    evt.preventDefault();
+    const form = evt.currentTarget;
+    const nameValue = form.elements.name.value;
+    const numberValue = form.elements.number.value;
+    const currentSubmit = {
+      name: nameValue,
+      number: numberValue,
+      id: nanoid(),
+    };
+    if (checkOriginalNames(contacts, nameValue)) {
+      Notify.failure(`❌ ${nameValue} is already in contacts list`);
+    } else {
+      dispatch(pushContact(currentSubmit));
+    }
+    form.reset();
+  };
+
+  const checkOriginalNames = (contacts, contact) => {
+    return contacts.find(
+      ({ name }) => name.toLowerCase() === contact.toLowerCase()
+    );
+  };
+
   return (
     <form className={css.form} onSubmit={addContact}>
       <input
@@ -29,4 +69,4 @@ export default function AddContacts({ addContact }) {
   );
 }
 
-AddContacts.propTypes = { addContact: PropTypes.func.isRequired };
+// AddContacts.propTypes = { addContact: PropTypes.func.isRequired };

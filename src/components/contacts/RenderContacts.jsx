@@ -1,10 +1,20 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/contactsSlice';
+
 import css from './Contacts.module.css';
 
-export default function MapContacts({ filterContacts, deleteContact }) {
+export default function MapContacts() {
+  const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
+
+  const removeContact = evt => {
+    const contactId = evt.currentTarget.id;
+    dispatch(deleteContact(contactId));
+  };
+
   return (
     <ul className={css['contacts-list']}>
-      {filterContacts().map(({ id, name, number }) => {
+      {contacts.map(({ id, name, number }) => {
         return (
           <li key={id} className={css['contacts-list__item']}>
             <span className={css['contacts-list__data']}>
@@ -13,7 +23,7 @@ export default function MapContacts({ filterContacts, deleteContact }) {
                 type="button"
                 className={css['contacts-list__button']}
                 id={id}
-                onClick={deleteContact}
+                onClick={removeContact}
               >
                 Delete
               </button>
@@ -25,7 +35,4 @@ export default function MapContacts({ filterContacts, deleteContact }) {
   );
 }
 
-MapContacts.propTypes = {
-  filterContacts: PropTypes.func.isRequired,
-  deleteContact: PropTypes.func.isRequired,
-};
+//
