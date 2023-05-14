@@ -13,7 +13,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-console.log();
 
 const persistConfig = {
   key: ' contacts',
