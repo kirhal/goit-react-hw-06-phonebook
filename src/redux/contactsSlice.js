@@ -21,9 +21,6 @@ export const contactsSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { pushContact, deleteContact } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
-
-console.log('slice', contactsSlice);

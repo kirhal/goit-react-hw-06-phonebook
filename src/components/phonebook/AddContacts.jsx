@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { nanoid } from '@reduxjs/toolkit';
 import { useSelector, useDispatch } from 'react-redux';
@@ -69,4 +68,3 @@ export default function AddContacts() {
   );
 }
 
-// AddContacts.propTypes = { addContact: PropTypes.func.isRequired };
