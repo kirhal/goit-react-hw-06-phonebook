@@ -1,16 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [
-  {
-    name: 'Max Factor',
-    number: '111-111-11',
-    id: 1,
-  },
-];
-
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState,
+  initialState: { data: [] },
   reducers: {
     pushContact(state, action) {
       state.push(action.payload);

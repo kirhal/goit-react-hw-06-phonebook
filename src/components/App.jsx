@@ -26,7 +26,7 @@ export default function App() {
         <AddContacts />
       </Section>
       <Section title="Contacts">
-        {contacts.length !== 0 && (
+        {contacts.data.length !== 0 && (
           <>
             <FilterContacts />
             <MapContacts />

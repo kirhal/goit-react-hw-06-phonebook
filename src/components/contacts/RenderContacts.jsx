@@ -14,7 +14,12 @@ export default function MapContacts() {
   };
 
   const filterContacts = () => {
-    return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
+    console.log(contacts.data);
+    if (contacts.data.length > 0) {
+      return contacts.data.filter(({ name }) =>
+        name.toLowerCase().includes(filter)
+      );
+    }
   };
 
   return (
