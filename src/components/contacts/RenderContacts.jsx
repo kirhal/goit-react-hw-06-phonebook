@@ -5,6 +5,7 @@ import css from './Contacts.module.css';
 
 export default function MapContacts() {
   const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const removeContact = evt => {
@@ -12,9 +13,13 @@ export default function MapContacts() {
     dispatch(deleteContact(contactId));
   };
 
+  const filterContacts = () => {
+    return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
+  };
+
   return (
     <ul className={css['contacts-list']}>
-      {contacts.map(({ id, name, number }) => {
+      {filterContacts().map(({ id, name, number }) => {
         return (
           <li key={id} className={css['contacts-list__item']}>
             <span className={css['contacts-list__data']}>

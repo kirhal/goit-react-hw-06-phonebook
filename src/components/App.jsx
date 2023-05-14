@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import css from './App.module.css';
@@ -17,15 +17,9 @@ export default function App() {
   //   parsedContacts ? parsedContacts : []
   // ); // <= Прибрати
 
-  const [filter, setFilter] = useState('');
-
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  const filterContacts = () => {
-    return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
-  };
 
   return (
     <div className={css.container}>
