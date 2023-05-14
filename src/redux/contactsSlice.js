@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
   {
-    name: 'AAA AAA',
+    name: 'Max Factor',
     number: '111-111-11',
-    id: 123,
+    id: 1,
   },
 ];
 

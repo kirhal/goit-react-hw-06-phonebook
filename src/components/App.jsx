@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import css from './App.module.css';
@@ -10,16 +10,15 @@ import FilterContacts from './filter/FilterContacts';
 
 export default function App() {
   const contacts = useSelector(state => state.contacts);
-  const localContacts = localStorage.getItem('contacts');
-  const parsedContacts = JSON.parse(localContacts);
+  // const localContacts = localStorage.getItem('contacts');
 
   // const [contacts, setContacts] = useState(
   //   parsedContacts ? parsedContacts : []
   // ); // <= Прибрати
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <div className={css.container}>
