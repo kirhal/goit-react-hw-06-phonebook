@@ -15,8 +15,7 @@ export const contactsSlice = createSlice({
     },
     deleteContact(state, action) {
       const contacts = state.data;
-      console.log('in deleteContacts', contacts);
-      return contacts.filter(({ id }) => id !== action.payload);
+      state.data = contacts.filter(({ id }) => id !== action.payload);
     },
   },
 });

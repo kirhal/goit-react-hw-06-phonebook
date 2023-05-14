@@ -5,7 +5,6 @@ import css from './Contacts.module.css';
 
 export default function MapContacts() {
   const contacts = useSelector(state => state.contacts.data);
-  
 
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ export default function MapContacts() {
   };
 
   const filterContacts = () => {
-    console.log(contacts);
     if (contacts.length > 0) {
       return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
     }

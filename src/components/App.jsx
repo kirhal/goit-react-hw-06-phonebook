@@ -10,16 +10,6 @@ import FilterContacts from './filter/FilterContacts';
 
 export default function App() {
   const contacts = useSelector(state => state.contacts.data);
-  console.log(contacts);
-  // const localContacts = localStorage.getItem('contacts');
-
-  // const [contacts, setContacts] = useState(
-  //   parsedContacts ? parsedContacts : []
-  // ); // <= Прибрати
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
 
   return (
     <div className={css.container}>
