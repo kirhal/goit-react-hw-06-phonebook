@@ -3,6 +3,7 @@ import { contactsSlice } from './contactsSlice';
 import { filterSlice } from './filterSlice';
 
 import storage from 'redux-persist/lib/storage';
+
 import {
   persistStore,
   persistReducer,
